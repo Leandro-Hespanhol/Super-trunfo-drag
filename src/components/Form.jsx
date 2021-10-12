@@ -9,13 +9,14 @@ class Form extends Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
+      cardAttr4,
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo: false,
-      // isSaveButtonDisable: false,
+      hasTrunfo,
+      isSaveButtonDisabled,
       onInputChange,
-      // onSaveButtonClick: () => {},
+      onSaveButtonClick,
     } = this.props;
     return (
       <main className="main-div">
@@ -30,6 +31,7 @@ class Form extends Component {
             data-testid="name-input"
             className="form-control"
             onChange={ onInputChange }
+            required
           />
         </label>
         <label htmlFor="descricao-da-carta">
@@ -48,7 +50,7 @@ class Form extends Component {
         </label>
         <label htmlFor="Attr01">
           {' '}
-          Attr01
+          Charisma:
           <input
             type="number"
             name="cardAttr1"
@@ -60,7 +62,7 @@ class Form extends Component {
         </label>
         <label htmlFor="Attr02">
           {' '}
-          Attr02
+          Uniqueness:
           <input
             type="number"
             name="cardAttr2"
@@ -72,13 +74,25 @@ class Form extends Component {
         </label>
         <label htmlFor="Attr03">
           {' '}
-          Attr03
+          Nerve:
           <input
             type="number"
             name="cardAttr3"
             value={ cardAttr3 }
             id="Attr03"
             data-testid="attr3-input"
+            onChange={ onInputChange }
+          />
+        </label>
+        <label htmlFor="Attr04">
+          {' '}
+          Talent:
+          <input
+            type="number"
+            name="cardAttr4"
+            value={ cardAttr4 }
+            id="Attr04"
+            data-testid="attr4-input"
             onChange={ onInputChange }
           />
         </label>
@@ -113,7 +127,7 @@ class Form extends Component {
           <input
             type="checkbox"
             name="cardTrunfo"
-            value={ cardTrunfo }
+            checked={ cardTrunfo }
             id="joker-card"
             data-testid="trunfo-input"
             onChange={ onInputChange }
@@ -123,9 +137,12 @@ class Form extends Component {
         <div>
           <button
             type="submit"
+            name="save-button"
             className="btn btn-primary"
             data-testid="save-button"
             id="save-button"
+            disabled={ isSaveButtonDisabled }
+            onClick={ onSaveButtonClick }
           >
             Save
           </button>

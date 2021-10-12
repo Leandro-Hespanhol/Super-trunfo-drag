@@ -5,6 +5,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
 
     this.state = {
       cardName: '',
@@ -12,14 +13,37 @@ class App extends React.Component {
       cardAttr1: '',
       cardAttr2: '',
       cardAttr3: '',
+      cardAttr4: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'Normal',
       cardTrunfo: false,
-      // hasTrunfo: false,
-      // isSaveButtonDisable: false,
-      // onInputChange: () => {},
-      // onSaveButtonClick: () => {},
+      hasTrunfo: false,
+      isSaveButtonDisable: true,
+      onInputChange: () => {},
+      onSaveButtonClick: () => {},
     };
+  }
+
+  onSaveButtonClick() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardAttr4,
+      cardImage,
+      isSaveButtonDisable,
+    } = this.props;
+    if (cardName
+      && cardDescription
+      && cardAttr1
+      && cardAttr2
+      && cardAttr3
+      && cardAttr4
+      && cardImage) {
+      return this.setState({ isSaveButtonDisable: false });
+    }
   }
 
   onInputChange({ target }) {
@@ -37,13 +61,14 @@ class App extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
+      cardAttr4,
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
-      // isSaveButtonDisable,
+      hasTrunfo,
+      isSaveButtonDisable,
       // onInputChange,
-      // onSaveButtonClick,
+      onSaveButtonClick,
     } = this.state;
     return (
       <div>
@@ -54,10 +79,14 @@ class App extends React.Component {
           cardAttr1={ cardAttr1 }
           cardAttr2={ cardAttr2 }
           cardAttr3={ cardAttr3 }
+          cardAttr4={ cardAttr4 }
           cardImage={ cardImage }
           cardRare={ cardRare }
+          hasTrunfo={ hasTrunfo }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ isSaveButtonDisable }
+          onSaveButtonClick={ onSaveButtonClick }
         />
       </div>
     );
