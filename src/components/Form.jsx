@@ -19,7 +19,7 @@ class Form extends Component {
       onSaveButtonClick,
     } = this.props;
     return (
-      <main className="main-div">
+      <div className="form-div">
         <label htmlFor="nome-da-carta">
           {' '}
           Nome
@@ -147,7 +147,7 @@ class Form extends Component {
             Save
           </button>
         </div>
-      </main>
+      </div>
     );
   }
 }
