@@ -1,3 +1,8 @@
 .main-card-div {
-  background-color: rgb(16, 170, 139);
+  background-color: brown;
+  width: 400px;
+}
+
+.card-image {
+  width: 380px;
 }

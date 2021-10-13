@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Form.css';
+import PropTypes from 'prop-types';
 
 class Form extends Component {
   render() {
@@ -141,15 +142,40 @@ class Form extends Component {
             className="btn btn-primary"
             data-testid="save-button"
             id="save-button"
-            disabled={ isSaveButtonDisabled }
+            disabled={
+              cardName
+              && cardDescription
+              && cardAttr1
+              && cardAttr2
+              && cardAttr3
+              && cardAttr4
+              && cardImage ? false : isSaveButtonDisabled
+            }
             onClick={ onSaveButtonClick }
           >
             Save
           </button>
         </div>
+        <div>{hasTrunfo}</div>
       </div>
     );
   }
 }
 
 export default Form;
+
+Form.propTypes = {
+  cardName: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
+  cardAttr4: PropTypes.number.isRequired,
+  cardRare: PropTypes.string.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
+};

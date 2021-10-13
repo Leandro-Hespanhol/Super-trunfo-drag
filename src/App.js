@@ -7,7 +7,6 @@ class App extends React.Component {
   constructor() {
     super();
     this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
 
     this.state = {
       cardName: '',
@@ -21,31 +20,9 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisable: true,
-      onInputChange: () => {},
+      // onInputChange: () => {},
       onSaveButtonClick: () => {},
     };
-  }
-
-  onSaveButtonClick() {
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardAttr4,
-      cardImage,
-      isSaveButtonDisable,
-    } = this.props;
-    if (cardName
-      && cardDescription
-      && cardAttr1
-      && cardAttr2
-      && cardAttr3
-      && cardAttr4
-      && cardImage) {
-      return this.setState({ isSaveButtonDisable: false });
-    }
   }
 
   onInputChange({ target }) {
