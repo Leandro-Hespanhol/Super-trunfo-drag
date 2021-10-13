@@ -58,6 +58,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'Normal',
       cardTrunfo: false,
+      hasTrunfo: true,
     });
   }
 
