@@ -15,7 +15,7 @@ class Card extends Component {
       cardTrunfo,
     } = this.props;
     return (
-      <div className="main-card-div">
+      <div className="main-card-div" key={ cardName }>
         {cardTrunfo ? <h2 data-testid="trunfo-card">Super Trunfo</h2> : ''}
         <h3 data-testid="name-card">{cardName}</h3>
         <img

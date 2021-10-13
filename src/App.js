@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-import Deck from './components/Deck';
+
 import './index.css';
 
 class App extends React.Component {
@@ -36,10 +36,6 @@ class App extends React.Component {
       [name]: value,
     });
   }
-
-  // onSaveButtonClick() {
-  //   this.onInputChange();
-  // }
 
   onSaveButtonClick() {
     const {
@@ -96,6 +92,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisable,
+      customCard,
       // onInputChange,
       // onSaveButtonClick,
     } = this.state;
@@ -130,7 +127,21 @@ class App extends React.Component {
             hasTrunfo={ hasTrunfo }
             cardTrunfo={ cardTrunfo }
           />
-          <Deck />
+          <div className="deck-div">
+            {customCard.map((elem) => (<Card
+              key={ elem.cardName }
+              cardName={ elem.cardName }
+              cardDescription={ elem.cardDescription }
+              cardAttr1={ elem.cardAttr1 }
+              cardAttr2={ elem.cardAttr2 }
+              cardAttr3={ elem.cardAttr3 }
+              cardAttr4={ elem.cardAttr4 }
+              cardImage={ elem.cardImage }
+              cardRare={ elem.cardRare }
+              hasTrunfo={ elem.hasTrunfo }
+              cardTrunfo={ elem.cardTrunfo }
+            />))}
+          </div>
         </div>
         {/* {console.log('final da div', this.customCard, this.state)} */}
       </div>
