@@ -23,6 +23,7 @@ class App extends React.Component {
       isSaveButtonDisable: true,
       // onInputChange: () => {},
       // onSaveButtonClick: () => {},
+      // }
     };
   }
 
@@ -35,7 +36,29 @@ class App extends React.Component {
   }
 
   onSaveButtonClick() {
-    return 'callback';
+    // const customCard = {
+    // cardName: '',
+    // cardDescription: '',
+    // cardAttr1: '0',
+    // cardAttr2: '0',
+    // cardAttr3: '0',
+    // cardAttr4: '0',
+    // cardImage: '',
+    // cardRare: 'Normal',
+    // cardTrunfo: false,
+    // };
+    // return console.log(customCard);
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardAttr4: '0',
+      cardImage: '',
+      cardRare: 'Normal',
+      cardTrunfo: false,
+    });
   }
 
   render() {
