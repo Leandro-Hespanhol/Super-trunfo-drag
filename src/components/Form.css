@@ -8,6 +8,7 @@
 .main-card-div {
   background-color: brown;
   width: 400px;
+  border: 2px solid black;
 }
 
 .card-image {

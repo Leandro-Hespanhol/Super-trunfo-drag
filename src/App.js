@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Deck from './components/Deck';
 import './index.css';
 
 class App extends React.Component {
@@ -21,6 +22,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisable: true,
+      customCard: [],
       // onInputChange: () => {},
       // onSaveButtonClick: () => {},
       // }
@@ -35,19 +37,37 @@ class App extends React.Component {
     });
   }
 
+  // onSaveButtonClick() {
+  //   this.onInputChange();
+  // }
+
   onSaveButtonClick() {
-    // const customCard = {
-    // cardName: '',
-    // cardDescription: '',
-    // cardAttr1: '0',
-    // cardAttr2: '0',
-    // cardAttr3: '0',
-    // cardAttr4: '0',
-    // cardImage: '',
-    // cardRare: 'Normal',
-    // cardTrunfo: false,
-    // };
-    // return console.log(customCard);
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardAttr4,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      customCard,
+    } = this.state;
+
+    customCard.push({
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardAttr4,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    });
+
+    console.log('antes', customCard);
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -60,6 +80,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: true,
     });
+    console.log('após set state', this.state);
   }
 
   render() {
@@ -109,7 +130,9 @@ class App extends React.Component {
             hasTrunfo={ hasTrunfo }
             cardTrunfo={ cardTrunfo }
           />
+          <Deck />
         </div>
+        {/* {console.log('final da div', this.customCard, this.state)} */}
       </div>
     );
   }
