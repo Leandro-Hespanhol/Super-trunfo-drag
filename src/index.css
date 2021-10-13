@@ -15,19 +15,3 @@ code {
 .main-div {
   display: flex;
 }
-
-.main-card-div {
-  background-color: brown;
-  width: 400px;
-};
-
-.card-image {
-  width: 380px;
-};
-
-.form-div {
-  background-color: bisque;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
