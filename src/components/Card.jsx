@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Card.css';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
