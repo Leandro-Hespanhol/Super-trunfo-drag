@@ -6,3 +6,5 @@ Nerve: 83
 Talent: 95
 
 image: https://i.pinimg.com/550x/61/28/98/612898ea2e64553eb7a3481418d441ff.jpg
+
+bendela eliminates rupaul: https://i.redd.it/hvgyuy6v1qj01.jpg

@@ -143,13 +143,13 @@ class Form extends Component {
             data-testid="save-button"
             id="save-button"
             disabled={
-              cardName
-              && cardDescription
-              && cardAttr1
-              && cardAttr2
-              && cardAttr3
-              && cardAttr4
-              && cardImage ? false : isSaveButtonDisabled
+              (!cardName
+                || !cardDescription
+                || !cardAttr1
+                || !cardAttr2
+                || !cardAttr3
+                || !cardAttr4
+                || !cardImage) ? isSaveButtonDisabled : false
             }
             onClick={ onSaveButtonClick }
           >
@@ -168,10 +168,10 @@ Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
-  cardAttr4: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardAttr4: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   hasTrunfo: PropTypes.bool.isRequired,

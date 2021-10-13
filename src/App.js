@@ -7,6 +7,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
 
     this.state = {
       cardName: '',
@@ -21,7 +22,7 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisable: true,
       // onInputChange: () => {},
-      onSaveButtonClick: () => {},
+      // onSaveButtonClick: () => {},
     };
   }
 
@@ -31,6 +32,10 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  onSaveButtonClick() {
+    return 'callback';
   }
 
   render() {
@@ -47,7 +52,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisable,
       // onInputChange,
-      onSaveButtonClick,
+      // onSaveButtonClick,
     } = this.state;
     return (
       <div>
@@ -66,7 +71,7 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
             onInputChange={ this.onInputChange }
             isSaveButtonDisabled={ isSaveButtonDisable }
-            onSaveButtonClick={ onSaveButtonClick }
+            onSaveButtonClick={ this.onSaveButtonClick }
           />
           <Card
             cardName={ cardName }
