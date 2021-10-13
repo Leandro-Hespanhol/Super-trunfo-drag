@@ -143,13 +143,14 @@ class Form extends Component {
             data-testid="save-button"
             id="save-button"
             disabled={
-              (!cardName
-                || !cardDescription
-                || !cardAttr1
-                || !cardAttr2
-                || !cardAttr3
-                || !cardAttr4
-                || !cardImage) ? isSaveButtonDisabled : false
+              (cardName
+                && cardDescription
+                && ((cardAttr1 > '0') && (cardAttr1 <= '90'))
+                && ((cardAttr2 > '0') && (cardAttr2 <= '90'))
+                && ((cardAttr3 > '0') && (cardAttr3 <= '90'))
+                && (parseFloat(cardAttr1)
+                + parseFloat(cardAttr2) + parseFloat(cardAttr3)) <= '210'
+                && cardImage) ? false : isSaveButtonDisabled
             }
             onClick={ onSaveButtonClick }
           >
