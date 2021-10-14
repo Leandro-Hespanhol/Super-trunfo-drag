@@ -78,13 +78,26 @@ class App extends React.Component {
       cardTrunfo: false,
       // hasTrunfo: true,
     });
-    this.setState({ hasTrunfo: cardTrunfo === true });
+    // this.setState({ hasTrunfo: cardTrunfo === false });
+    if (cardTrunfo) this.setState({ hasTrunfo: true, cardTrunfo: false });
   }
 
   onDeleteButtonClick(event) {
+    const {
+      // cardName,
+      // cardDescription,
+      // cardAttr1,
+      // cardAttr2,
+      // cardAttr3,
+      // cardAttr4,
+      // cardImage,
+      // cardRare,
+      cardTrunfo,
+      // customCard,
+    } = this.state;
     // console.log(event.target.parentNode.parentNode);
+    if (cardTrunfo === false) this.setState({ hasTrunfo: false, cardTrunfo: true });
     event.target.parentNode.parentNode.remove();
-    // this.setState({ hasTrunfo: cardTrunfo === true });
   }
 
   render() {
