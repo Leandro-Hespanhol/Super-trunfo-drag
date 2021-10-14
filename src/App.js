@@ -23,7 +23,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisable: true,
-      deleteButton: true,
+      // deleteButton: true,
       customCard: [],
       // onInputChange: () => {},
       // onSaveButtonClick: () => {},
