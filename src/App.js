@@ -76,7 +76,6 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: true,
     });
-    console.log('após set state', this.state);
   }
 
   render() {
