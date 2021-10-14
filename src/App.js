@@ -114,7 +114,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisable,
       customCard,
-      deleteButton,
+      // deleteButton,
       // onInputChange,
       // onSaveButtonClick,
     } = this.state;
@@ -150,21 +150,31 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
           <div className="deck-div">
-            {customCard.map((elem) => (<Card
-              key={ elem.cardName }
-              cardName={ elem.cardName }
-              cardDescription={ elem.cardDescription }
-              cardAttr1={ elem.cardAttr1 }
-              cardAttr2={ elem.cardAttr2 }
-              cardAttr3={ elem.cardAttr3 }
-              cardAttr4={ elem.cardAttr4 }
-              cardImage={ elem.cardImage }
-              cardRare={ elem.cardRare }
-              hasTrunfo={ elem.hasTrunfo }
-              cardTrunfo={ elem.cardTrunfo }
-              deleteButton={ deleteButton }
-              deleteFunction={ this.onDeleteButtonClick }
-            />))}
+            {customCard.map((elem) => (
+              <div key={ elem.cardName }>
+                <Card
+                  cardName={ elem.cardName }
+                  cardDescription={ elem.cardDescription }
+                  cardAttr1={ elem.cardAttr1 }
+                  cardAttr2={ elem.cardAttr2 }
+                  cardAttr3={ elem.cardAttr3 }
+                  cardAttr4={ elem.cardAttr4 }
+                  cardImage={ elem.cardImage }
+                  cardRare={ elem.cardRare }
+                  hasTrunfo={ elem.hasTrunfo }
+                  cardTrunfo={ elem.cardTrunfo }
+                  // deleteButton={ deleteButton }
+                  // deleteFunction={ this.onDeleteButtonClick }
+                />
+                <button
+                  type="submit"
+                  data-testid="delete-button"
+                  onClick={ this.onDeleteButtonClick }
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
           </div>
         </div>
         {/* {console.log('final da div', this.customCard, this.state)} */}

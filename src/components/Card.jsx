@@ -13,8 +13,8 @@ class Card extends Component {
       cardAttr4,
       cardRare,
       cardTrunfo,
-      deleteButton,
-      deleteFunction,
+      // deleteButton,
+      // deleteFunction,
     } = this.props;
     return (
       <div className="main-card-div" key={ cardName }>
@@ -32,7 +32,7 @@ class Card extends Component {
         <p data-testid="attr3-card">{`Nerve: ${cardAttr3}`}</p>
         <p data-testid="attr4-card">{`Talent: ${cardAttr4}`}</p>
         <footer data-testid="rare-card">{`Tipo: ${cardRare}`}</footer>
-        <div>
+        {/* <div>
           {deleteButton ? (
             <button
               type="submit"
@@ -44,7 +44,7 @@ class Card extends Component {
           ) : (
             ''
           )}
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -62,6 +62,6 @@ Card.propTypes = {
   cardAttr4: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  deleteButton: PropTypes.bool.isRequired,
-  deleteFunction: PropTypes.bool.isRequired,
+  // deleteButton: PropTypes.bool.isRequired,
+  // deleteFunction: PropTypes.bool.isRequired,
 };
