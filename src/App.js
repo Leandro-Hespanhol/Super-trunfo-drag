@@ -9,6 +9,7 @@ class App extends React.Component {
     super();
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
 
     this.state = {
       cardName: '',
@@ -22,6 +23,7 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisable: true,
+      deleteButton: true,
       customCard: [],
       // onInputChange: () => {},
       // onSaveButtonClick: () => {},
@@ -63,7 +65,7 @@ class App extends React.Component {
       cardTrunfo,
     });
 
-    console.log('antes', customCard);
+    // console.log('antes', customCard);
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -77,6 +79,12 @@ class App extends React.Component {
       // hasTrunfo: true,
     });
     this.setState({ hasTrunfo: cardTrunfo === true });
+  }
+
+  onDeleteButtonClick(event) {
+    // console.log(event.target.parentNode.parentNode);
+    event.target.parentNode.parentNode.remove();
+    // this.setState({ hasTrunfo: cardTrunfo === true });
   }
 
   render() {
@@ -93,6 +101,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisable,
       customCard,
+      deleteButton,
       // onInputChange,
       // onSaveButtonClick,
     } = this.state;
@@ -140,6 +149,8 @@ class App extends React.Component {
               cardRare={ elem.cardRare }
               hasTrunfo={ elem.hasTrunfo }
               cardTrunfo={ elem.cardTrunfo }
+              deleteButton={ deleteButton }
+              deleteFunction={ this.onDeleteButtonClick }
             />))}
           </div>
         </div>

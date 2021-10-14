@@ -13,6 +13,8 @@ class Card extends Component {
       cardAttr4,
       cardRare,
       cardTrunfo,
+      deleteButton,
+      deleteFunction,
     } = this.props;
     return (
       <div className="main-card-div" key={ cardName }>
@@ -24,14 +26,25 @@ class Card extends Component {
           src={ cardImage }
           alt={ cardName }
         />
-        <h4 data-testid="description-card">{ cardDescription }</h4>
-        <p data-testid="attr1-card">
-          {`Charisma: ${cardAttr1}`}
-        </p>
-        <p data-testid="attr2-card">{ `Uniqueness: ${cardAttr2}` }</p>
-        <p data-testid="attr3-card">{ `Nerve: ${cardAttr3}` }</p>
-        <p data-testid="attr4-card">{ `Talent: ${cardAttr4}` }</p>
-        <footer data-testid="rare-card">{ `Tipo: ${cardRare}` }</footer>
+        <h4 data-testid="description-card">{cardDescription}</h4>
+        <p data-testid="attr1-card">{`Charisma: ${cardAttr1}`}</p>
+        <p data-testid="attr2-card">{`Uniqueness: ${cardAttr2}`}</p>
+        <p data-testid="attr3-card">{`Nerve: ${cardAttr3}`}</p>
+        <p data-testid="attr4-card">{`Talent: ${cardAttr4}`}</p>
+        <footer data-testid="rare-card">{`Tipo: ${cardRare}`}</footer>
+        <div>
+          {deleteButton ? (
+            <button
+              type="submit"
+              data-testid="delete-button"
+              onClick={ deleteFunction }
+            >
+              Excluir
+            </button>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
     );
   }
@@ -49,4 +62,6 @@ Card.propTypes = {
   cardAttr4: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  deleteButton: PropTypes.bool.isRequired,
+  deleteFunction: PropTypes.bool.isRequired,
 };
