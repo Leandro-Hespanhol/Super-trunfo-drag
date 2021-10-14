@@ -74,8 +74,9 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'Normal',
       cardTrunfo: false,
-      hasTrunfo: true,
+      // hasTrunfo: true,
     });
+    this.setState({ hasTrunfo: cardTrunfo === true });
   }
 
   render() {
