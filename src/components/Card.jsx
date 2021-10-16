@@ -10,7 +10,7 @@ class Card extends Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardAttr4,
+      // cardAttr4,
       cardRare,
       cardTrunfo,
       // deleteButton,
@@ -30,21 +30,8 @@ class Card extends Component {
         <p data-testid="attr1-card">{`Charisma: ${cardAttr1}`}</p>
         <p data-testid="attr2-card">{`Uniqueness: ${cardAttr2}`}</p>
         <p data-testid="attr3-card">{`Nerve: ${cardAttr3}`}</p>
-        <p data-testid="attr4-card">{`Talent: ${cardAttr4}`}</p>
+        {/* <p data-testid="attr4-card">{`Talent: ${cardAttr4}`}</p> */}
         <footer data-testid="rare-card">{`Tipo: ${cardRare}`}</footer>
-        {/* <div>
-          {deleteButton ? (
-            <button
-              type="submit"
-              data-testid="delete-button"
-              onClick={ deleteFunction }
-            >
-              Excluir
-            </button>
-          ) : (
-            ''
-          )}
-        </div> */}
       </div>
     );
   }
@@ -59,7 +46,7 @@ Card.propTypes = {
   cardAttr1: PropTypes.string.isRequired,
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
-  cardAttr4: PropTypes.string.isRequired,
+  // cardAttr4: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   // deleteButton: PropTypes.bool.isRequired,

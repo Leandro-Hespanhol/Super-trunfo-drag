@@ -10,6 +10,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
+    // this.isButtonDisabledFunction = this.isButtonDisabledFunction.bind(this);
 
     this.state = {
       cardName: '',
@@ -17,7 +18,7 @@ class App extends React.Component {
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
-      cardAttr4: '0',
+      // cardAttr4: '0',
       cardImage: '',
       cardRare: 'Normal',
       cardTrunfo: false,
@@ -31,12 +32,17 @@ class App extends React.Component {
     };
   }
 
-  onInputChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
+  onInputChange = ({ target }) => {
+    const { name, value } = target;
+    if (name === 'cardTrunfo' || name === 'filterTrunfo') {
+      const { checked } = target;
+      this.setState({ [name]: checked });
+    } else {
+      this.setState({ [name]: value },
+        () => {
+          this.isButtonDisabledFunction();
+        });
+    }
   }
 
   onSaveButtonClick() {
@@ -46,7 +52,7 @@ class App extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardAttr4,
+      // cardAttr4,
       cardImage,
       cardRare,
       cardTrunfo,
@@ -59,7 +65,7 @@ class App extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardAttr4,
+      // cardAttr4,
       cardImage,
       cardRare,
       cardTrunfo,
@@ -72,7 +78,7 @@ class App extends React.Component {
       cardAttr1: '0',
       cardAttr2: '0',
       cardAttr3: '0',
-      cardAttr4: '0',
+      // cardAttr4: '0',
       cardImage: '',
       cardRare: 'Normal',
       cardTrunfo: false,
@@ -92,6 +98,39 @@ class App extends React.Component {
     event.target.parentNode.remove();
   }
 
+  isButtonDisabledFunction() {
+    const {
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardName,
+      cardImage,
+      cardDescription,
+      cardRare,
+    } = this.state;
+    if (cardName && cardImage && cardDescription && cardRare) {
+      this.setState({ isSaveButtonDisabled: false });
+
+      if (!cardAttr1 || !cardAttr2 || !cardAttr3) {
+        this.setState({ isSaveButtonDisabled: true });
+      }
+
+      if (cardAttr1 < '0' || cardAttr2 < '0' || cardAttr3 < '0') {
+        this.setState({ isSaveButtonDisabled: true });
+      }
+
+      if (cardAttr1 > '90' || cardAttr2 > '90' || cardAttr3 > '90') {
+        this.setState({ isSaveButtonDisabled: true });
+      }
+
+      if (parseFloat(cardAttr1) + parseFloat(cardAttr2) + parseFloat(cardAttr3) > '210') {
+        this.setState({ isSaveButtonDisabled: true });
+      }
+    } else {
+      this.setState({ isSaveButtonDisabled: true });
+    }
+  }
+
   render() {
     const {
       cardName,
@@ -99,7 +138,7 @@ class App extends React.Component {
       cardAttr1,
       cardAttr2,
       cardAttr3,
-      cardAttr4,
+      // cardAttr4,
       cardImage,
       cardRare,
       cardTrunfo,
@@ -120,7 +159,7 @@ class App extends React.Component {
             cardAttr1={ cardAttr1 }
             cardAttr2={ cardAttr2 }
             cardAttr3={ cardAttr3 }
-            cardAttr4={ cardAttr4 }
+            // cardAttr4={ cardAttr4 }
             cardImage={ cardImage }
             cardRare={ cardRare }
             hasTrunfo={ hasTrunfo }
@@ -135,7 +174,7 @@ class App extends React.Component {
             cardAttr1={ cardAttr1 }
             cardAttr2={ cardAttr2 }
             cardAttr3={ cardAttr3 }
-            cardAttr4={ cardAttr4 }
+            // cardAttr4={ cardAttr4 }
             cardImage={ cardImage }
             cardRare={ cardRare }
             hasTrunfo={ hasTrunfo }
@@ -150,7 +189,7 @@ class App extends React.Component {
                   cardAttr1={ elem.cardAttr1 }
                   cardAttr2={ elem.cardAttr2 }
                   cardAttr3={ elem.cardAttr3 }
-                  cardAttr4={ elem.cardAttr4 }
+                  // cardAttr4={ elem.cardAttr4 }
                   cardImage={ elem.cardImage }
                   cardRare={ elem.cardRare }
                   hasTrunfo={ elem.hasTrunfo }
