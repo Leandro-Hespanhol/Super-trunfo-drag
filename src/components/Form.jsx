@@ -155,9 +155,10 @@ class Form extends Component {
                 && ((cardAttr1 > '0') && (cardAttr1 <= '90'))
                 && ((cardAttr2 > '0') && (cardAttr2 <= '90'))
                 && ((cardAttr3 > '0') && (cardAttr3 <= '90'))
+                && ((cardAttr4 > '0') && (cardAttr4 <= '90'))
                 && (parseFloat(cardAttr1)
                 + parseFloat(cardAttr2) + parseFloat(cardAttr3)) <= '210'
-                && cardImage) ? false : isSaveButtonDisabled
+                && cardImage) ? false : isSaveButtonDisabled === true
             }
             onClick={ onSaveButtonClick }
           >

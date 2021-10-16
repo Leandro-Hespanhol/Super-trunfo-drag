@@ -22,7 +22,7 @@ class App extends React.Component {
       cardRare: 'Normal',
       cardTrunfo: false,
       hasTrunfo: false,
-      isSaveButtonDisable: true,
+      isSaveButtonDisabled: true,
       // deleteButton: true,
       customCard: [],
       // onInputChange: () => {},
@@ -76,6 +76,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'Normal',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
       // hasTrunfo: true,
     });
     // this.setState({ hasTrunfo: cardTrunfo === false });
@@ -84,20 +85,11 @@ class App extends React.Component {
 
   onDeleteButtonClick(event) {
     const {
-      // cardName,
-      // cardDescription,
-      // cardAttr1,
-      // cardAttr2,
-      // cardAttr3,
-      // cardAttr4,
-      // cardImage,
-      // cardRare,
       cardTrunfo,
-      // customCard,
     } = this.state;
     // console.log(event.target.parentNode.parentNode);
-    if (cardTrunfo === false) this.setState({ hasTrunfo: false, cardTrunfo: true });
-    event.target.parentNode.parentNode.remove();
+    if (cardTrunfo === false) this.setState({ hasTrunfo: false });
+    event.target.parentNode.remove();
   }
 
   render() {
@@ -112,7 +104,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisable,
+      isSaveButtonDisabled,
       customCard,
       // deleteButton,
       // onInputChange,
@@ -134,7 +126,7 @@ class App extends React.Component {
             hasTrunfo={ hasTrunfo }
             cardTrunfo={ cardTrunfo }
             onInputChange={ this.onInputChange }
-            isSaveButtonDisabled={ isSaveButtonDisable }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
             onSaveButtonClick={ this.onSaveButtonClick }
           />
           <Card
