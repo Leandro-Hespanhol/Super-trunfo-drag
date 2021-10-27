@@ -25,6 +25,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       customCard: [],
       filterByName: '',
+      filterByRarity: 'todas',
     };
   }
 
@@ -133,6 +134,7 @@ class App extends React.Component {
       isSaveButtonDisabled,
       customCard,
       filterByName,
+      filterByRarity,
     } = this.state;
     return (
       <div>
@@ -166,8 +168,6 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
           <div>
-            filter+deckdiv
-
             <label htmlFor="filter-input" className="form-control">
               Filtros de Busca
               <input
@@ -180,8 +180,28 @@ class App extends React.Component {
                 placeholder="Digite o nome da carta"
               />
             </label>
+
+            Raridade
+            <select
+              type="select"
+              id="rare-filter-input"
+              name="filterByRarity"
+              data-testid="rare-filter"
+              onChange={ this.onInputChange }
+              className="form-control"
+            >
+              <option value="todas" selected>Todas</option>
+              <option value="normal">Normal</option>
+              <option value="raro">Raro</option>
+              <option value="muito raro">Muito Raro</option>
+            </select>
+
             <div className="deck-div">
-              {customCard.filter((elem2) => elem2.cardName.includes(filterByName))
+              {customCard.filter((elem2) => RegExp(filterByName, 'i')
+              // faz a função do includes e permite a busca independente do case sensitive
+                .test(elem2.cardName))
+                .filter((elem3) => elem3.cardRare === filterByRarity
+                || filterByRarity === 'todas')
                 .map((elem, index) => (
                   <div key={ elem.cardName }>
                     <Card
