@@ -10,7 +10,6 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.onDeleteButtonClick = this.onDeleteButtonClick.bind(this);
-    // this.isButtonDisabledFunction = this.isButtonDisabledFunction.bind(this);
 
     this.state = {
       cardName: '',
@@ -24,11 +23,8 @@ class App extends React.Component {
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      // deleteButton: true,
       customCard: [],
-      // onInputChange: () => {},
-      // onSaveButtonClick: () => {},
-      // }
+      filterByName: '',
     };
   }
 
@@ -69,7 +65,6 @@ class App extends React.Component {
       cardTrunfo,
     });
 
-    // console.log('antes', customCard);
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -81,9 +76,7 @@ class App extends React.Component {
       cardRare: 'Normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
-      // hasTrunfo: true,
     });
-    // this.setState({ hasTrunfo: cardTrunfo === false });
     if (cardTrunfo) this.setState({ hasTrunfo: true, cardTrunfo: false });
   }
 
@@ -139,11 +132,8 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       customCard,
-      // deleteButton,
-      // onInputChange,
-      // onSaveButtonClick,
+      filterByName,
     } = this.state;
-    // console.log(customCard);
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -183,44 +173,44 @@ class App extends React.Component {
               <input
                 type="text"
                 id="filter-input"
+                name="filterByName"
+                data-testid="name-filter"
+                onChange={ this.onInputChange }
                 className="form-control"
                 placeholder="Digite o nome da carta"
               />
             </label>
-
             <div className="deck-div">
-              {customCard.map((elem, index) => (
-                <div key={ elem.cardName }>
-                  <Card
-                    cardName={ elem.cardName }
-                    cardDescription={ elem.cardDescription }
-                    cardAttr1={ elem.cardAttr1 }
-                    cardAttr2={ elem.cardAttr2 }
-                    cardAttr3={ elem.cardAttr3 }
-                    cardAttr4={ elem.cardAttr4 }
-                    cardImage={ elem.cardImage }
-                    cardRare={ elem.cardRare }
-                    hasTrunfo={ elem.hasTrunfo }
-                    cardTrunfo={ elem.cardTrunfo }
-                  // deleteButton={ deleteButton }
-                  // deleteFunction={ this.onDeleteButtonClick }
-                  />
-                  <button
-                    type="submit"
-                    data-testid="delete-button"
-                    name={ elem.cardName }
-                    id={ index }
-                    onClick={ this.onDeleteButtonClick }
-                  >
-                    Delete
-                  </button>
+              {customCard.filter((elem2) => elem2.cardName.includes(filterByName))
+                .map((elem, index) => (
+                  <div key={ elem.cardName }>
+                    <Card
+                      cardName={ elem.cardName }
+                      cardDescription={ elem.cardDescription }
+                      cardAttr1={ elem.cardAttr1 }
+                      cardAttr2={ elem.cardAttr2 }
+                      cardAttr3={ elem.cardAttr3 }
+                      cardAttr4={ elem.cardAttr4 }
+                      cardImage={ elem.cardImage }
+                      cardRare={ elem.cardRare }
+                      hasTrunfo={ elem.hasTrunfo }
+                      cardTrunfo={ elem.cardTrunfo }
+                    />
+                    <button
+                      type="button"
+                      data-testid="delete-button"
+                      name={ elem.cardName }
+                      id={ index }
+                      onClick={ this.onDeleteButtonClick }
+                    >
+                      Delete
+                    </button>
 
-                </div>
-              ))}
+                  </div>
+                ))}
             </div>
           </div>
         </div>
-        {/* {console.log('final da div', this.customCard, this.state)} */}
       </div>
     );
   }
