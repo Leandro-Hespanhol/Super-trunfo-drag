@@ -119,8 +119,8 @@ class Form extends Component {
             id="rare-selection"
             onChange={ onInputChange }
           >
-            <option value="normal">Normal</option>
-            <option value="raro">Raro</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
             <option value="muito raro">muito raro</option>
           </select>
         </label>

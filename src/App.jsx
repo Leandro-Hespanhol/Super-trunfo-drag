@@ -19,13 +19,14 @@ class App extends React.Component {
       cardAttr3: '0',
       cardAttr4: '0',
       cardImage: '',
-      cardRare: 'Normal',
+      cardRare: 'normal',
       cardTrunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       customCard: [],
       filterByName: '',
       filterByRarity: 'todas',
+      // filterByTrunfo: false,
     };
   }
 
@@ -74,7 +75,7 @@ class App extends React.Component {
       cardAttr3: '0',
       cardAttr4: '0',
       cardImage: '',
-      cardRare: 'Normal',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
     });
@@ -121,20 +122,9 @@ class App extends React.Component {
 
   render() {
     const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardAttr4,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      hasTrunfo,
-      isSaveButtonDisabled,
-      customCard,
-      filterByName,
-      filterByRarity,
+      cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardAttr4,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, customCard,
+      filterByName, filterByRarity,
     } = this.state;
     return (
       <div>
@@ -180,7 +170,6 @@ class App extends React.Component {
                 placeholder="Digite o nome da carta"
               />
             </label>
-
             Raridade
             <select
               type="select"
@@ -191,11 +180,20 @@ class App extends React.Component {
               className="form-control"
             >
               <option value="todas" selected>Todas</option>
-              <option value="normal">Normal</option>
-              <option value="raro">Raro</option>
-              <option value="muito raro">Muito Raro</option>
+              <option value="normal">normal</option>
+              <option value="raro">raro</option>
+              <option value="muito raro">muito raro</option>
             </select>
-
+            <label htmlFor="filterByTrunfo" className="form-control">
+              <input
+                type="checkbox"
+                id="filterByTrunfo"
+                name="filterByTrunfo"
+                data-testid="trunfo-filter"
+                onChange={ this.onInputChange }
+              />
+              {' Super Trunfo'}
+            </label>
             <div className="deck-div">
               {customCard.filter((elem2) => RegExp(filterByName, 'i')
               // faz a função do includes e permite a busca independente do case sensitive
