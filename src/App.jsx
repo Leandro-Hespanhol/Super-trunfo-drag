@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DeckBuilder from './pages/DeckBuilder';
+import Home from './pages/Home';
 
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <h1>Play with your friend using our shuffled cards from our deck </h1>
-          <button type="submit">Start</button>
-        </div>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={ <Home /> } />
+          <Route path="/deckbuilder" element={ <DeckBuilder /> } />
+        </Routes>
+      </BrowserRouter>
     );
   }
 }
